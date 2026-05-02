@@ -1,18 +1,15 @@
-import { JoinGroup } from '../atoms/JoinGroup.js';
+import { el } from '../../utils/dom.js';
 
-export const ButtonGroup = (...args) => {
-    const activeIndex = typeof args[args.length - 1] === 'number' ? args.pop() : -1;
-    const buttons = args;
-    
-    const setActive = (activeBtn) => {
-        buttons.forEach(btn => btn.classList.remove('btn-primary'));
-        activeBtn.classList.add('btn-primary');
-    };
-
-    buttons.forEach((btn, index) => {
-        if (index === activeIndex) btn.classList.add('btn-primary');
-        btn.addEventListener('click', () => setActive(btn));
+export const ButtonGroup = (name, labels, activeIndex = 0) => {
+    const group = el('div', 'join rounded-l overflow-hidden');
+    labels.forEach((label, i) => {
+        const tab = el('input', 'join-item btn btn-soft checked:btn-primary');
+        tab.type = 'radio';
+        tab.name = name;
+        tab.value = String(i);
+        tab.setAttribute('aria-label', label);
+        if (i === activeIndex) tab.checked = true;
+        group.appendChild(tab);
     });
-    
-    return JoinGroup(...buttons);
+    return group;
 };

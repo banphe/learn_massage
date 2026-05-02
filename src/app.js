@@ -8,7 +8,7 @@ import { NavLink } from './components/atoms/NavLink.js';
 document.body.classList.add('h-dvh', 'flex', 'flex-col', 'overflow-hidden', 'bg-gray-100');
 
 const root = document.createElement('div');
-root.classList.add('flex', 'flex-col', 'flex-1', 'overflow-auto', 'p-2', 'gap-2', 'bg-gray-300', 'w-full', 'items-center');
+root.classList.add('flex', 'flex-col', 'flex-1', 'overflow-auto', 'gap-2', 'bg-gray-300', 'w-full', 'items-center');
 document.body.append(root);
 
 const learnV = new LearnView(root);
